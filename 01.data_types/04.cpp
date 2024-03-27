@@ -3,14 +3,14 @@
 using namespace std;
 
 int main(){
-    int num, yekan, dahghan, sadghan;
+    int num, finalYekan, finalDahghan, finalSadghan;
     cin >> num;
 
-    sadghan = num % 10;
+    finalSadghan = num % 10;
     num = num / 10;
-    dahghan = num % 10;
+    finalDahghan = num % 10;
     num = num / 10;
-    yekan = num;
+    finalYekan = num;
 
     cout << sadghan << dahghan << yekan;
 
