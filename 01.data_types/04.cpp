@@ -3,11 +3,16 @@
 using namespace std;
 
 int main(){
-    int num1;
-    float num2;
-    num1 = 99;
-    num2 = 99;
-    cout << num1 / 10 << endl;
-    cout << num2 / 10;
+    int num, yekanFinal, dahghanFinal, sadghanFinal;
+    cin >> num;
+    sadghanFinal = num % 10;
+    num = num / 10;
+
+    dahghanFinal = num % 10;
+    num = num / 10;
+
+    yekanFinal = num % 10;
+
+    cout << sadghanFinal << dahghanFinal << yekanFinal;
     return 0;
 }
