@@ -1,82 +1,58 @@
 #include <iostream>
-#include <algorithm>
+#include <string>
+#include <cmath> // for pow function
+
 using namespace std;
 
-void ShiftLeft(string &str, int cnt) {
-    int n = str.length();
-    if (n == 0 || cnt <= 0) return; // Do nothing if string is empty or count is 0 or negative
-    cnt %= n; // Normalize count
-    string newstr = str.substr(cnt) + str.substr(0, cnt);
-    str = newstr;
-}
-
-void ShiftRight(string &str, int cnt) {
-    int n = str.length();
-    if (n == 0 || cnt <= 0) return; // Do nothing if string is empty or count is 0 or negative
-    cnt %= n; // Normalize count
-    string newstr = str.substr(n - cnt) + str.substr(0, n - cnt);
-    str = newstr;
-}
-
-void Extend(string &str, int cnt) {
-    for (int i = 0; i < cnt; i++)
-        str += '*';
-}
-
-void Shrink(string &str, int cnt) {
-    if (cnt >= str.length())
-        str = "";
-    else
-        str = str.substr(0, str.length() - cnt);
-}
-
-void Reverse(string &str) {
-    reverse(str.begin(), str.end());
-}
-
-void Put(string &str, int i, char c) {
-    if (i < 1 || i > str.length()) return; // Check bounds for 1-based index
-    str[i - 1] = c;
-}
-
-void Print(const string &str) {
-    cout << str << endl;
-}
-
-int main() {
-    string order, str;
-    getline(cin, str); // Read initial string
-    while (true) {
-        cin >> order; // Read command
-        if (order == "EXIT") break; // Exit condition
-        if (order == "SHIFT-R" || order == "SHIFT-L") {
-            int cnt;
-            cin >> cnt; // Read count for shifting
-            if (cnt > 0) {
-                if (order == "SHIFT-L") {
-                    ShiftLeft(str, cnt);
-                } else {
-                    ShiftRight(str, cnt);
-                }
-            }
-        } else if (order == "EXTEND") {
-            int cnt;
-            cin >> cnt; // Read count for extension
-            Extend(str, cnt);
-        } else if (order == "SHRINK") {
-            int cnt;
-            cin >> cnt; // Read count for shrinking
-            Shrink(str, cnt);
-        } else if (order == "REVERSE") {
-            Reverse(str);
-        } else if (order == "PUT") {
-            int i;
-            char c;
-            cin >> i >> c; // Read index and character
-            Put(str, i, c);
-        } else if (order == "PRINT") {
-            Print(str);
-        }
+// Function to convert a number from a given base to base 10
+int base_n_to_base_10(int number, int base) {
+    int decimal_number = 0;
+    int exponent = 0;
+    
+    while (number > 0) {
+        decimal_number += (number % 10) * static_cast<int>(pow(base, exponent));
+        exponent++;
+        number /= 10;
     }
+
+    return decimal_number;
+}
+
+// Function to convert a number from base 10 to a given base
+string base_10_to_base_n(int input_number, int target_base) {
+    if (input_number == 0) {
+        return "0"; // Handle edge case for zero
+    }
+
+    string result_reversed = "";
+
+    while (input_number > 0) {
+        result_reversed += to_string(input_number % target_base);
+        input_number /= target_base;
+    }
+
+    // Reverse the string for the final result
+    string result = string(result_reversed.rbegin(), result_reversed.rend()); 
+    return result;
+}
+
+// Main program
+int main() {
+    int number_in_base;
+    int original_base;
+    int new_base;
+
+    cin >> number_in_base;
+    
+    cin >> original_base;
+    
+    cin >> new_base;
+
+    // Convert to base 10, then to the new base
+    int number_in_base_10 = base_n_to_base_10(number_in_base, original_base);
+    string converted_number = base_10_to_base_n(number_in_base_10, new_base);
+
+    cout << converted_number << endl;
+
     return 0;
 }
