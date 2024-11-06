@@ -4,33 +4,24 @@ using namespace std;
 //----------------------------------------------------------------------------
 // function prototype
 float sum(float num1, float num2);
-float subtract(float num1, float num2);
 float multiply(float num1, float num2);
 float divide(float num1, float num2);
+float subtract(float num1, float num2);
 //----------------------------------------------------------------------------
 float sum(float num1, float num2){
     return num1 + num2;
 }
 //----------------------------------------------------------------------------
-float subtract(float num1, float num2){
-    return num1 - num2;
-}
-//----------------------------------------------------------------------------
 float multiply(float num1, float num2){
-    float result = 0;
-    for (int i = 1; i <= num1; i ++){
-        result = sum(result, num2);
-    }
-    return result;
+    return num1 * num2;
 }
 //----------------------------------------------------------------------------
 float divide(float num1, float num2){
-    int result = 0;
-    while (num1 > 0){
-        result ++;
-        num1 -= num2;
-    }
-    return result;
+    return num1 / num2;
+}
+//----------------------------------------------------------------------------
+float subtract(float num1, float num2){
+    return num1 - num2;
 }
 //----------------------------------------------------------------------------
 int main(){
@@ -40,15 +31,19 @@ int main(){
 
     switch(operat){
         case '+':
+            // cout << operand1 + operand2 << endl;
             cout << sum(operand1, operand2);
             break;
         case '-':
+            // cout << operand1 - operand2 << endl;
             cout << subtract(operand1, operand2);
             break;
         case '*':
+            // cout << operand1 * operand2 << endl;
             cout << multiply(operand1, operand2);
             break;
         case '/':
+            // cout << operand1 / operand2 << endl;
             cout << divide(operand1, operand2);
             break;
     }
