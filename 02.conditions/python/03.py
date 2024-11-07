@@ -10,7 +10,7 @@ minimum = min(min_a_b, c)
 
 middle = (a + b + c) - minimum - maximum
 
-if minimum * minimum + middle * middle == maximum * maximum:
+if minimum ** 2 + middle ** 2 == maximum ** 2:
     print("YES")
 else:
     print("NO")

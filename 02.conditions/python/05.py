@@ -1,6 +1,6 @@
-a, b, c = map(float, input().split())
+a, b, c = map(float, input().split())  # float(input_i())
 
-delta = b * b - 4 * a * c
+delta = b ** 2 - 4 * a * c
 
 if delta > 0:
     print("Two Unique Roots")
