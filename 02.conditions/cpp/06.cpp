@@ -2,23 +2,21 @@
 
 using namespace std;
 
-int main(){
+int main() {
     int a, b, c;
     cin >> a >> b >> c;
 
     int sum = a + b + c;
 
-    if (sum == 180){
-        if (a!=0 && b!=0 && c!=0){
+    if (sum == 180) {
+        if (a != 0 && b != 0 && c != 0) {
             cout << "Yes";
-        }
-        else{
+        } else {
             cout << "No";
         }
-    }
-    else{
+    } else {
         cout << "No";
     }
-    
+
     return 0;
 }
